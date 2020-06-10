@@ -43,7 +43,8 @@ users = User.all
     category = Category.all
     50.times do
     
-        Book.create(
+        
+        b = Book.create(
             category: category.sample,
             title: "#{Faker::Cannabis.strain}-#{rand(1_000_000_000)}",
             author: Faker::Games::SuperSmashBros.fighter,
@@ -54,6 +55,7 @@ users = User.all
             user: users.sample,
         
         )
+        puts b.errors.full_messages
     end
 
 puts Cowsay.say("Generated #{Category.count} Categories", :frogs)
