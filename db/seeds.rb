@@ -7,11 +7,36 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Category.destroy_all
 Book.destroy_all
+User.delete_all
+
+NUM_USER = 10
+PASSWORD = 'shurooq20'
+
+super_user = User.create(
+    first_name: 'jon',
+    last_name: 'snow',
+    email: 'js@winterfell.gov',
+    password: PASSWORD
+)
+
+NUM_USER.times do
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    User.create(
+        first_name: first_name,
+        last_name: last_name,
+        email: Faker::Internet.email,
+        password: PASSWORD
+    )
+end
+
+users = User.all 
 
     50.times do 
         Category.create({
                 name: Faker::Hacker.say_something_smart,
-                img_url: Faker::LoremPixel.image(size: "730x411"),  
+                img_url: Faker::LoremPixel.image(size: "730x411"), 
+                user: users.sample, 
         })
     end
 
@@ -26,9 +51,11 @@ Book.destroy_all
             description: Faker::Hipster.paragraph,
             img2_url: Faker::LoremPixel.image(size: "730x411"),
             rating: rand(1..5),
+            user: users.sample,
         
         )
     end
 
 puts Cowsay.say("Generated #{Category.count} Categories", :frogs)
 puts Cowsay.say("Generated #{Book.count} Books", :cow)
+puts Cowsay.say("Created #{users.count}  users", :dragon)
