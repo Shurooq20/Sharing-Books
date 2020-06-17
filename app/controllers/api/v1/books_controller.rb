@@ -1,5 +1,7 @@
 class Api::V1::BooksController < Api::ApplicationController
 
+    before_action :authenticate_user!, only: [:create, :update, :destroy]
+    
     def show
         book = Book.find params[:id]
         render json: book
@@ -17,8 +19,9 @@ class Api::V1::BooksController < Api::ApplicationController
         @book.category = @category
         
         @book.user = current_user
+        # byebug
         if @book.save 
-            render json: { id: @book.id }
+            render json: @book
         else 
             @books = @category.books.order(created_at: :desc)
             render(

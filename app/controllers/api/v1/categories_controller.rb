@@ -9,7 +9,7 @@ class Api::V1::CategoriesController < Api::ApplicationController
 
     def show
       category = Category.find params[:id]
-        render json: category.books
+        render json: category
     end
 
     def create
