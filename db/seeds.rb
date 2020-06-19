@@ -8,6 +8,7 @@
 Category.destroy_all
 Book.destroy_all
 User.delete_all
+Review.delete_all
 
 NUM_USER = 10
 PASSWORD = 'shurooq20'
@@ -58,6 +59,15 @@ users = User.all
         puts b.errors.full_messages
     end
 
+    70.times do 
+        Review.create(
+            book: Book.all.sample,
+            body: Faker::Hipster.paragraph,
+            user: users.sample,
+        )
+    end
+
 puts Cowsay.say("Generated #{Category.count} Categories", :frogs)
 puts Cowsay.say("Generated #{Book.count} Books", :cow)
 puts Cowsay.say("Created #{users.count}  users", :dragon)
+puts Cowsay.say("Generated #{Review.count} Reviews", :koala)
