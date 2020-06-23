@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
       resource :session, only: [:create, :destroy]
 
-      # get("/users/current", to: "sessions#current")
+      get("/users/current", to: "sessions#current")
       resources :users, only: [:create]
 
     end

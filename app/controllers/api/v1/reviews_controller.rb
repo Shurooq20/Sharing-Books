@@ -15,8 +15,8 @@ class Api::V1::ReviewsController < Api::ApplicationController
         @review.user = current_user
         
         if @review.save 
-            @review = @book.reviews.order(created_at: :desc)
-            render json: @review
+            @reviews = @book.reviews.order(created_at: :desc)
+            render json: @reviews
         else 
             render(
                 json: { errors: @review.errors },
