@@ -1,6 +1,7 @@
 class Api::V1::CategoriesController < Api::ApplicationController
   
   before_action :authenticate_user!, only: [:create, :update, :destroy]
+#   before_action :authorize!, only: [:create, :edit, :update, :destroy]
 
     def index
         categories = Category.all.order('created_at DESC')

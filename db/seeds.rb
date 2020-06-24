@@ -17,7 +17,8 @@ super_user = User.create(
     first_name: 'jon',
     last_name: 'snow',
     email: 'js@winterfell.gov',
-    password: PASSWORD
+    password: PASSWORD,
+    is_admin: true
 )
 
 NUM_USER.times do
@@ -35,7 +36,7 @@ users = User.all
 
     50.times do 
         Category.create({
-                name: Faker::Hacker.say_something_smart,
+                name: Faker::Book.genre,
                 img_url: Faker::LoremPixel.image(size: "730x411"), 
                 user: users.sample, 
         })
@@ -47,8 +48,8 @@ users = User.all
         
         b = Book.create(
             category: category.sample,
-            title: "#{Faker::Cannabis.strain}-#{rand(1_000_000_000)}",
-            author: Faker::Games::SuperSmashBros.fighter,
+            title: "#{Faker::Book.title}-#{rand(1_000_000_000)}",
+            author: Faker::Book.author,
             link: "https://stackoverflow.com/questions/17746583/how-to-generate-fake-book-names",
             description: Faker::Hipster.paragraph,
             img2_url: Faker::LoremPixel.image(size: "730x411"),

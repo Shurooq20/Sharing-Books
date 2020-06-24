@@ -36,6 +36,9 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    # if !user.is_admin
+    # cannot :manage, Category
+    # end
 
     can(:crud, Book) do |book| 
       book.user == user 

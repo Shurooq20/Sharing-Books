@@ -10,7 +10,7 @@ class CategorySerializer < ActiveModel::Serializer
   has_many(:books)
 
   class BookSerializer < ActiveModel::Serializer
-    attributes :id, :title, :author, :link, :description, :img2_url, :rating,
+    attributes :id, :title, :author, :link, :description, :img2_url, :rating
   end
 end
 
