@@ -59,5 +59,11 @@ class Api::V1::BooksController < Api::ApplicationController
           end
     end
 
+    def title
+        book = Book.find_by(title: params[:title]) 
+        # byebug
+        render json: book
+    end
+
 
 end

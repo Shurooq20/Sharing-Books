@@ -40,6 +40,10 @@ class Ability
     # cannot :manage, Category
     # end
 
+    can(:destroy, Review) do |review| 
+      review.user == user 
+    end
+
     can(:crud, Book) do |book| 
       book.user == user 
     end

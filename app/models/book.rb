@@ -2,6 +2,7 @@ class Book < ApplicationRecord
     belongs_to :category
     belongs_to :user
     has_many(:reviews, dependent: :destroy)
+    has_many(:challenges,dependent: :destroy )
 
     validates :rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
     validates :description, presence: true, length: { minimum: 20 }

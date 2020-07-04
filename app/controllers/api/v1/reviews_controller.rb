@@ -1,5 +1,10 @@
 class Api::V1::ReviewsController < Api::ApplicationController
 
+    before_action :authenticate_user!, only: [:create, :destroy]
+
+    # before_action :authorize!, only: [:destroy]
+
+
     def index
 
         reviews = Review.where(book_id: params[:book_id]).all.order('created_at DESC')
@@ -39,4 +44,14 @@ class Api::V1::ReviewsController < Api::ApplicationController
               )
           end
     end
+
+    # private
+
+    # def authorize!
+    #     render(
+    #         json: {errors: 'notauthorize'},
+    #             status: 401
+    #         ) unless 
+               
+    # end
 end
